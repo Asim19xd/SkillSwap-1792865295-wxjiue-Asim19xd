@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillSwap — Share a skill. Learn something new.</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="#"> <span class="logo">S</span> SkillSwap</a>
+  <nav><a href="#explore">Explore skills</a><a href="#how">How it works</a></nav>
+  <button class="btn primary" id="authButton" type="button">Log in / Sign up</button>
+</header>
+<main>
+<section class="hero">
+  <div><p class="eyebrow">LEARN TOGETHER. GROW TOGETHER.</p><h1>Your skills are <span>someone else's</span> next big thing.</h1>
+  <p class="muted">Share what you know, learn what you don't, and meet people who make growing your skills feel natural.</p>
+  <a class="btn primary" href="#explore">Explore skills ↗</a> <button class="btn" id="heroJoinButton" type="button">Join the community</button></div>
+  <div class="hero-art"><div class="art-icon">↔</div><h2>Skills grow better</h2><p>when they're shared.</p><span class="bubble one">Teach what you love ✦</span><span class="bubble two">Learn something new ↗</span></div>
+</section>
+<section class="section" id="explore">
+  <p class="eyebrow">FIND YOUR NEXT SKILL</p><h2>What would you like to learn?</h2><p class="muted">Explore skills shared by people in the community.</p>
+  <div class="tools"><input id="searchInput" type="search" placeholder="Search skills, people, or topics..."><select id="sortSelect"><option value="popular">Most popular</option><option value="title">Skill name (A–Z)</option></select></div>
+  <div id="categoryFilters" class="filters"><button class="filter-chip active" data-category="All">All skills</button><button class="filter-chip" data-category="Technology">Technology</button><button class="filter-chip" data-category="Design">Design</button><button class="filter-chip" data-category="Creative">Creative</button><button class="filter-chip" data-category="Communication">Communication</button></div>
+  <p class="muted"><strong id="resultCount">6</strong> skills to explore</p><div id="skillGrid" class="grid"></div>
+  <div id="emptyState" class="empty" hidden><h3>No skills found</h3><p>Try another search or reset the filters.</p><button class="btn" id="resetButton">Reset filters</button></div>
+</section>
+<section class="section how" id="how"><p class="eyebrow">SIMPLE BY DESIGN</p><h2>Skill sharing, made easy.</h2><div class="steps"><article><b>01</b><h3>Create your profile</h3><p>Tell the community what you know and what you want to learn.</p></article><article><b>02</b><h3>Find your match</h3><p>Discover people with skills that complement your goals.</p></article><article><b>03</b><h3>Start swapping</h3><p>Connect, share knowledge, and keep growing together.</p></article></div>
+<div class="cta"><div><h2>Have a skill worth sharing?</h2><p>Meet your next learning partner on SkillSwap.</p></div><button class="btn light" id="bottomJoinButton">Join SkillSwap ↗</button></div></section>
+</main>
+<footer><a class="brand" href="#"><span class="logo">S</span> SkillSwap</a><span>Share a skill. Learn something new.</span><span>© <span id="year"></span> SkillSwap</span></footer>
+
+<dialog id="profileDialog" class="modal"><div class="modal-head"><div><p class="eyebrow">COMMUNITY PROFILE</p><h2 id="profileTitle">Skill profile</h2></div><button class="close" id="closeDialog" aria-label="Close">×</button></div><div id="profileContent"></div></dialog>
+
+<dialog id="authDialog" class="modal auth-dialog">
+  <div class="modal-head"><div><p class="eyebrow">WELCOME TO SKILLSWAP</p><h2 id="authTitle">Create your account</h2><p id="authSubtitle" class="muted">Start learning and sharing your skills.</p></div><button class="close" id="closeAuthDialog" aria-label="Close">×</button></div>
+  <div id="authForms">
+    <div class="tabs"><button id="showRegister" class="tab active" type="button">Sign up</button><button id="showLogin" class="tab" type="button">Log in</button></div>
+    <form id="registerForm"><label for="registerName">Full name</label><input id="registerName" required minlength="2" placeholder="Enter your name" autocomplete="name">
+    <label for="registerEmail">Email address</label><input id="registerEmail" type="email" required placeholder="you@example.com" autocomplete="email">
+    <label for="registerPassword">Password</label><input id="registerPassword" type="password" required minlength="8" placeholder="At least 8 characters" autocomplete="new-password">
+    <label for="confirmPassword">Confirm password</label><input id="confirmPassword" type="password" required minlength="8" placeholder="Enter password again" autocomplete="new-password">
+    <button class="btn primary submit" type="submit">Create account</button><p id="registerMessage" class="message" role="status"></p></form>
+    <form id="loginForm" hidden><label for="loginEmail">Email address</label><input id="loginEmail" type="email" required placeholder="you@example.com" autocomplete="email">
+    <label for="loginPassword">Password</label><input id="loginPassword" type="password" required placeholder="Enter your password" autocomplete="current-password">
+    <button class="btn primary submit" type="submit">Log in</button><p id="loginMessage" class="message" role="status"></p></form>
+  </div>
+  <div id="accountPanel" hidden><p class="muted">You're signed in to SkillSwap.</p><h3 id="accountName"></h3><p id="accountEmail" class="muted"></p><button class="btn primary submit" id="logoutButton" type="button">Log out</button></div>
+  <p class="note">Local demo only: don't use a real password. A secure authentication service is needed before production use.</p>
+</dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body></html>
